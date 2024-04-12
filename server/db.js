@@ -62,6 +62,37 @@ const createUser = async ({
   return response.rows[0];
 };
 
+const createFoodItem = async ({
+  name,
+  description,
+  image,
+  price,
+  category,
+  inventory,
+}) => {
+  const SQL = `
+  INSERT INTO foodItems(id, name, description, image, price, category, inventory) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *
+  `;
+  const response = await client.query(SQL, [
+    uuid.v4(),
+    name,
+    description,
+    image,
+    price,
+    category,
+    inventory,
+  ]);
+  return response.rows[0];
+};
+
+const fetchFoodItems = async () => {
+  const SQL = `
+        SELECT * FROM foodItems;
+        `;
+  const response = await client.query(SQL);
+  return response.rows;
+};
+
 const fetchUsers = async () => {
   const SQL = `
 SELECT * FROM users
@@ -70,4 +101,11 @@ SELECT * FROM users
   return response.rows;
 };
 
-module.exports = { client, createTables, createUser, fetchUsers };
+module.exports = {
+  client,
+  createTables,
+  createUser,
+  createFoodItem,
+  fetchFoodItems,
+  fetchUsers,
+};

@@ -1,9 +1,20 @@
-const { client, createTables, createUser, fetchUsers } = require("./db");
+const {
+  client,
+  createTables,
+  createUser,
+  createFoodItem,
+  fetchFoodItems,
+  fetchUsers,
+} = require("./db");
+const e = require("express");
+const path = require("path");
 const port = process.env.PORT || 3000;
 const express = require("express");
 const app = express();
 app.use(require("morgan")("dev"));
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, "images")));
 
 const init = async () => {
   await client.connect();
@@ -35,9 +46,33 @@ const init = async () => {
       password: "secret",
       is_admin: true,
     }),
+    createFoodItem({
+      name: "Pizza",
+      description: "im a pizza",
+      image: "pizza.jpg",
+      category: "Pizzas",
+      price: 6,
+      inventory: 10,
+    }),
+    createFoodItem({
+      name: "Spaghetti",
+      description: "im spahgetti",
+      image: "spaghetti.jpeg",
+      category: "Pastas",
+      price: 10,
+      inventory: 10,
+    }),
+    createFoodItem({
+      name: "salad",
+      description: "im a salad",
+      image: "salad.jpg",
+      category: "Salads",
+      price: 6,
+      inventory: 10,
+    }),
   ]);
 
-  console.log(await fetchUsers());
+  console.log(await fetchFoodItems());
   app.listen(port, () => console.log(`listening on port ${port}`));
 };
 
