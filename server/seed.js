@@ -94,5 +94,5 @@ module.exports = async () => {
   const users = await seedUsers();
   const foodItems = await seedFoodItems();
   const userFoodItems = await seedUserFoodItems(users, foodItems);
-  console.log(userFoodItems);
+  console.log(foodItems);
 };
