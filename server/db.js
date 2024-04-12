@@ -146,6 +146,14 @@ const fetchSingleUser = async ({ id }) => {
   return response.rows;
 };
 
+const fetchSingleFoodItem = async ({ id }) => {
+  const SQL = `
+      SELECT * FROM foodItems WHERE id = $1;
+      `;
+  const response = await client.query(SQL, [id]);
+  return response.rows;
+};
+
 module.exports = {
   client,
   createTables,
@@ -157,4 +165,5 @@ module.exports = {
   fetchFoodItems,
   fetchUsers,
   fetchSingleUser,
+  fetchSingleFoodItem,
 };
