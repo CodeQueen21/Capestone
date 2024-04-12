@@ -1,4 +1,9 @@
-const { createUser, fetchUsers, fetchSingleUser } = require("../db");
+const {
+  createUser,
+  fetchUsers,
+  fetchSingleUser,
+  updateUser,
+} = require("../db");
 const express = require("express");
 const usersRouter = express.Router();
 
@@ -28,6 +33,20 @@ usersRouter.post("/", async (req, res, next) => {
         phoneNumber: req.body.phoneNumber,
         password: req.body.password,
         is_admin: req.body.is_admin,
+      })
+    );
+  } catch (error) {
+    next(error);
+  }
+});
+
+usersRouter.put("/:id", async (req, res, next) => {
+  try {
+    res.status(201).send(
+      await updateUser({
+        id: req.params.id,
+        email: req.body.email,
+        phoneNumber: req.body.phoneNumber,
       })
     );
   } catch (error) {

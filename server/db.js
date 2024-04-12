@@ -62,6 +62,16 @@ const createUser = async ({
   return response.rows[0];
 };
 
+const updateUser = async ({ id, email, phoneNumber }) => {
+  const SQL = `
+    UPDATE users
+    SET email = $1, phoneNumber = $2
+    WHERE id = $3 RETURNING *;
+    `;
+  const response = await client.query(SQL, [email, phoneNumber, id]);
+  return response.rows[0];
+};
+
 const createFoodItem = async ({
   name,
   description,
@@ -140,6 +150,7 @@ module.exports = {
   client,
   createTables,
   createUser,
+  updateUser,
   createFoodItem,
   createUserFoodItems,
   fetchUserFoodItems,
