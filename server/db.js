@@ -121,6 +121,16 @@ const updateFoodItem = async ({
   return response.rows[0];
 };
 
+const deleteFoodItem = async ({ id }) => {
+  const SQL = `
+    DELETE
+    FROM foodItems
+    WHERE id = $1
+    `;
+  const response = await client.query(SQL, [id]);
+  return response.rows[0];
+};
+
 const createUserFoodItems = async ({
   user_id,
   foodItem_id,
@@ -193,4 +203,5 @@ module.exports = {
   fetchUsers,
   fetchSingleUser,
   fetchSingleFoodItem,
+  deleteFoodItem,
 };

@@ -3,6 +3,7 @@ const {
   fetchFoodItems,
   fetchSingleFoodItem,
   updateFoodItem,
+  deleteFoodItem,
 } = require("../db");
 const express = require("express");
 const foodItemsRouter = express();
@@ -53,6 +54,14 @@ foodItemsRouter.put("/:id", async (req, res, next) => {
         inventory: req.body.inventory,
       })
     );
+  } catch (error) {
+    next(error);
+  }
+});
+
+foodItemsRouter.delete("/:id", async (req, res, next) => {
+  try {
+    res.status(201).send(await deleteFoodItem({ id: req.params.id }));
   } catch (error) {
     next(error);
   }
