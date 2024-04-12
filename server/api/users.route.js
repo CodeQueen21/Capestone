@@ -18,4 +18,21 @@ usersRouter.get("/:id", async (req, res, next) => {
   }
 });
 
+usersRouter.post("/", async (req, res, next) => {
+  try {
+    res.status(201).send(
+      await createUser({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        phoneNumber: req.body.phoneNumber,
+        password: req.body.password,
+        is_admin: req.body.is_admin,
+      })
+    );
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = usersRouter;
