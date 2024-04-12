@@ -95,6 +95,32 @@ const createFoodItem = async ({
   return response.rows[0];
 };
 
+const updateFoodItem = async ({
+  id,
+  name,
+  description,
+  image,
+  price,
+  category,
+  inventory,
+}) => {
+  const SQL = `
+    UPDATE foodItems
+    SET name = $1, description = $2, image = $3, price = $4, category = $5, inventory = $6
+    WHERE id = $7 RETURNING *;
+    `;
+  const response = await client.query(SQL, [
+    name,
+    description,
+    image,
+    price,
+    category,
+    inventory,
+    id,
+  ]);
+  return response.rows[0];
+};
+
 const createUserFoodItems = async ({
   user_id,
   foodItem_id,
@@ -160,6 +186,7 @@ module.exports = {
   createUser,
   updateUser,
   createFoodItem,
+  updateFoodItem,
   createUserFoodItems,
   fetchUserFoodItems,
   fetchFoodItems,
