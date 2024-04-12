@@ -3,6 +3,7 @@ const client = new pg.Client(
   process.env.DATABASE_URL || "postgres://localhost/capestone_db"
 );
 const uuid = require("uuid");
+const bcrypt = require("bcrypt");
 
 const createTables = async () => {
   const SQL = `
@@ -38,4 +39,35 @@ const createTables = async () => {
   await client.query(SQL);
 };
 
-module.exports = { client };
+const createUser = async ({
+  firstName,
+  lastName,
+  email,
+  phoneNumber,
+  password,
+  is_admin,
+}) => {
+  const SQL = `
+    INSERT INTO users(id, firstName, lastName, email, phoneNumber, password, is_admin) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *
+    `;
+  const response = await client.query(SQL, [
+    uuid.v4(),
+    firstName,
+    lastName,
+    email,
+    phoneNumber,
+    await bcrypt.hash(password, 5),
+    is_admin,
+  ]);
+  return response.rows[0];
+};
+
+const fetchUsers = async () => {
+  const SQL = `
+SELECT * FROM users
+`;
+  const response = await client.query(SQL);
+  return response.rows;
+};
+
+module.exports = { client, createTables, createUser, fetchUsers };
