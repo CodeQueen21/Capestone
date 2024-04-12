@@ -128,6 +128,14 @@ SELECT * FROM users
   return response.rows;
 };
 
+const fetchSingleUser = async ({ id }) => {
+  const SQL = `
+    SELECT id, firstname, lastname, email, phonenumber, is_admin FROM users WHERE id = $1;
+    `;
+  const response = await client.query(SQL, [id]);
+  return response.rows;
+};
+
 module.exports = {
   client,
   createTables,
@@ -137,4 +145,5 @@ module.exports = {
   fetchUserFoodItems,
   fetchFoodItems,
   fetchUsers,
+  fetchSingleUser,
 };
