@@ -5,7 +5,7 @@ const foodItemsRouter = require("./foodItems.route");
 const userFoodItemsRouter = require("./userFoodItems.route");
 
 apiRouter.use("/users", usersRouter);
-// apiRouter.use("/foodItems", foodItemsRouter);
+apiRouter.use("/foodItems", foodItemsRouter);
 // apiRouter.use("/userFoodItems", userFoodItemsRouter);
 
 module.exports = apiRouter;
