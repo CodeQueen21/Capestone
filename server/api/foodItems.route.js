@@ -22,4 +22,21 @@ foodItemsRouter.get("/:id", async (req, res, next) => {
   }
 });
 
+foodItemsRouter.post("/", async (req, res, next) => {
+  try {
+    res.status(201).send(
+      await createFoodItem({
+        name: req.body.name,
+        description: req.body.description,
+        image: req.body.image,
+        price: req.body.price,
+        category: req.body.category,
+        inventory: req.body.inventory,
+      })
+    );
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = foodItemsRouter;
