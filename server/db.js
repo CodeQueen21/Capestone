@@ -85,6 +85,33 @@ const createFoodItem = async ({
   return response.rows[0];
 };
 
+const createUserFoodItems = async ({
+  user_id,
+  foodItem_id,
+  quantity,
+  purchased,
+}) => {
+  const SQL = `
+    INSERT INTO userFoodItems(id, user_id, foodItem_id, quantity, purchased) VALUES($1, $2, $3, $4, $5) RETURNING *;
+    `;
+  const response = await client.query(SQL, [
+    uuid.v4(),
+    user_id,
+    foodItem_id,
+    quantity,
+    purchased,
+  ]);
+  return response.rows[0];
+};
+
+const fetchUserFoodItems = async () => {
+  const SQL = `
+    SELECT * FROM userFoodItems;
+    `;
+  const response = await client.query(SQL);
+  return response.rows;
+};
+
 const fetchFoodItems = async () => {
   const SQL = `
         SELECT * FROM foodItems;
@@ -106,6 +133,8 @@ module.exports = {
   createTables,
   createUser,
   createFoodItem,
+  createUserFoodItems,
+  fetchUserFoodItems,
   fetchFoodItems,
   fetchUsers,
 };

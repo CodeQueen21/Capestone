@@ -5,6 +5,8 @@ const {
   createFoodItem,
   fetchFoodItems,
   fetchUsers,
+  createUserFoodItems,
+  fetchUserFoodItems,
 } = require("./db");
 const e = require("express");
 const path = require("path");
@@ -21,7 +23,7 @@ const init = async () => {
   console.log("connected to database");
   await createTables();
   console.log("tables created");
-  const [Kayla, Dave, Sarah] = await Promise.all([
+  const [Kayla, Dave, Sarah, pizza, spaghetti, salad] = await Promise.all([
     createUser({
       firstName: "Kayla",
       lastName: "White",
@@ -47,7 +49,7 @@ const init = async () => {
       is_admin: true,
     }),
     createFoodItem({
-      name: "Pizza",
+      name: "pizza",
       description: "im a pizza",
       image: "pizza.jpg",
       category: "Pizzas",
@@ -55,7 +57,7 @@ const init = async () => {
       inventory: 10,
     }),
     createFoodItem({
-      name: "Spaghetti",
+      name: "spaghetti",
       description: "im spahgetti",
       image: "spaghetti.jpeg",
       category: "Pastas",
@@ -71,8 +73,27 @@ const init = async () => {
       inventory: 10,
     }),
   ]);
-
-  console.log(await fetchFoodItems());
+  createUserFoodItems({
+    user_id: Kayla.id,
+    foodItem_id: salad.id,
+    quantity: 1,
+    purchased: false,
+  }),
+    createUserFoodItems({
+      user_id: Kayla.id,
+      foodItem_id: pizza.id,
+      quantity: 1,
+      purchased: false,
+    }),
+    createUserFoodItems({
+      user_id: Sarah.id,
+      foodItem_id: salad.id,
+      quantity: 1,
+      purchased: false,
+    }),
+    //     console.log(await fetchUsers());
+    //   console.log(await fetchFoodItems());
+    console.log(await fetchUserFoodItems());
   app.listen(port, () => console.log(`listening on port ${port}`));
 };
 
