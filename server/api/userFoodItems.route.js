@@ -2,7 +2,8 @@ const {
   createUserFoodItems,
   fetchUserFoodItems,
   fetchSingleUserFoodItem,
-  updateUserFoodItems,
+  updateUserFoodItem,
+  deleteUserFoodItem,
 } = require("../db");
 const express = require("express");
 const userFoodItemsRouter = express.Router();
@@ -41,12 +42,20 @@ userFoodItemsRouter.post("/:id", async (req, res, next) => {
 userFoodItemsRouter.put("/:id", async (req, res, next) => {
   try {
     res.status(201).send(
-      await updateUserFoodItems({
+      await updateUserFoodItem({
         id: req.params.id,
         quantity: req.body.quantity,
         purchased: req.body.purchased,
       })
     );
+  } catch (error) {
+    next(error);
+  }
+});
+
+userFoodItemsRouter.delete("/:id", async (req, res, next) => {
+  try {
+    res.status(201).send(await deleteUserFoodItem({ id: req.params.id }));
   } catch (error) {
     next(error);
   }

@@ -150,13 +150,23 @@ const createUserFoodItems = async ({
   return response.rows[0];
 };
 
-const updateUserFoodItems = async ({ id, quantity, purchased }) => {
+const updateUserFoodItem = async ({ id, quantity, purchased }) => {
   const SQL = `
     UPDATE userFoodItems
     SET quantity = $1, purchased = $2
     WHERE id = $3 RETURNING *;
     `;
   const response = await client.query(SQL, [quantity, purchased, id]);
+  return response.rows[0];
+};
+
+const deleteUserFoodItem = async ({ id }) => {
+  const SQL = `
+    DELETE
+    FROM userFoodItems
+    WHERE id = $1
+    `;
+  const response = await client.query(SQL, [id]);
   return response.rows[0];
 };
 
@@ -215,7 +225,7 @@ module.exports = {
   createFoodItem,
   updateFoodItem,
   createUserFoodItems,
-  updateUserFoodItems,
+  updateUserFoodItem,
   fetchUserFoodItems,
   fetchFoodItems,
   fetchUsers,
@@ -223,4 +233,5 @@ module.exports = {
   fetchSingleFoodItem,
   fetchSingleUserFoodItem,
   deleteFoodItem,
+  deleteUserFoodItem,
 };
