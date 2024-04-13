@@ -4,6 +4,7 @@ const {
   fetchSingleFoodItem,
   updateFoodItem,
   deleteFoodItem,
+  isLoggedIn,
 } = require("../db");
 const express = require("express");
 const foodItemsRouter = express();
@@ -24,7 +25,7 @@ foodItemsRouter.get("/:id", async (req, res, next) => {
   }
 });
 
-foodItemsRouter.post("/", async (req, res, next) => {
+foodItemsRouter.post("/", isLoggedIn, async (req, res, next) => {
   try {
     res.status(201).send(
       await createFoodItem({
@@ -41,7 +42,7 @@ foodItemsRouter.post("/", async (req, res, next) => {
   }
 });
 
-foodItemsRouter.put("/:id", async (req, res, next) => {
+foodItemsRouter.put("/:id", isLoggedIn, async (req, res, next) => {
   try {
     res.status(201).send(
       await updateFoodItem({
@@ -59,7 +60,7 @@ foodItemsRouter.put("/:id", async (req, res, next) => {
   }
 });
 
-foodItemsRouter.delete("/:id", async (req, res, next) => {
+foodItemsRouter.delete("/:id", isLoggedIn, async (req, res, next) => {
   try {
     res.status(201).send(await deleteFoodItem({ id: req.params.id }));
   } catch (error) {

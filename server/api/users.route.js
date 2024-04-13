@@ -9,7 +9,7 @@ const {
 const express = require("express");
 const usersRouter = express.Router();
 
-usersRouter.get("/", async (req, res, next) => {
+usersRouter.get("/", isLoggedIn, async (req, res, next) => {
   try {
     res.send(await fetchUsers());
   } catch (error) {
@@ -25,7 +25,7 @@ usersRouter.get("/me", isLoggedIn, async (req, res, next) => {
   }
 });
 
-usersRouter.get("/:id", async (req, res, next) => {
+usersRouter.get("/:id", isLoggedIn, async (req, res, next) => {
   try {
     res.send(await fetchSingleUser({ id: req.params.id }));
   } catch (error) {
@@ -50,7 +50,7 @@ usersRouter.post("/", async (req, res, next) => {
   }
 });
 
-usersRouter.put("/:id", async (req, res, next) => {
+usersRouter.put("/:id", isLoggedIn, async (req, res, next) => {
   try {
     res.status(201).send(
       await updateUser({
