@@ -150,6 +150,16 @@ const createUserFoodItems = async ({
   return response.rows[0];
 };
 
+const updateUserFoodItems = async ({ id, quantity, purchased }) => {
+  const SQL = `
+    UPDATE userFoodItems
+    SET quantity = $1, purchased = $2
+    WHERE id = $3 RETURNING *;
+    `;
+  const response = await client.query(SQL, [quantity, purchased, id]);
+  return response.rows[0];
+};
+
 const fetchUserFoodItems = async () => {
   const SQL = `
     SELECT * FROM userFoodItems;
@@ -205,6 +215,7 @@ module.exports = {
   createFoodItem,
   updateFoodItem,
   createUserFoodItems,
+  updateUserFoodItems,
   fetchUserFoodItems,
   fetchFoodItems,
   fetchUsers,
