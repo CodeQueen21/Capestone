@@ -3,6 +3,7 @@ const {
   fetchUsers,
   fetchSingleUser,
   updateUser,
+  authenticate,
 } = require("../db");
 const express = require("express");
 const usersRouter = express.Router();
@@ -49,6 +50,14 @@ usersRouter.put("/:id", async (req, res, next) => {
         phoneNumber: req.body.phoneNumber,
       })
     );
+  } catch (error) {
+    next(error);
+  }
+});
+
+usersRouter.post("/login", async (req, res, next) => {
+  try {
+    res.send(await authenticate(req.body.email, req.body.password));
   } catch (error) {
     next(error);
   }

@@ -4,6 +4,8 @@ const client = new pg.Client(
 );
 const uuid = require("uuid");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const JWT = process.env.JWT || "shhh";
 
 const createTables = async () => {
   const SQL = `
@@ -217,6 +219,24 @@ const fetchSingleFoodItem = async ({ id }) => {
   return response.rows;
 };
 
+const authenticate = async (email, password) => {
+  const SQL = `
+    SELECT id, password
+    FROM users
+    WHERE email = $1
+    `;
+  const response = await client.query(SQL, [email]);
+  const userInfo = response.rows;
+  const compare = await bcrypt.compare(password, userInfo[0].password);
+  if (!userInfo.length || compare === false) {
+    const error = Error("Not authorized");
+    error.status = 401;
+    throw error;
+  }
+  const token = jwt.sign({ id: response.rows[0].id }, JWT);
+  return { token };
+};
+
 module.exports = {
   client,
   createTables,
@@ -234,4 +254,5 @@ module.exports = {
   fetchSingleUserFoodItem,
   deleteFoodItem,
   deleteUserFoodItem,
+  authenticate,
 };
