@@ -237,6 +237,37 @@ const authenticate = async (email, password) => {
   return { token };
 };
 
+const findUserWithToken = async (token) => {
+  try {
+    const payload = await jwt.verify(token, JWT);
+    const id = payload.id;
+    const SQL = `
+        SELECT id, email FROM users WHERE id = $1;
+        `;
+    const response = await client.query(SQL, [id]);
+    if (!response.rows.length) {
+      const error = Error("Not authorized");
+      error.status = 401;
+      throw error;
+    }
+    return response.rows[0];
+  } catch (error) {
+    error = Error("Not authorized");
+    error.status = 401;
+    throw error;
+  }
+};
+
+const isLoggedIn = async (req, res, next) => {
+  try {
+    const token = req.headers.authorization.split(" ")[1];
+    req.user = await findUserWithToken(token);
+    next();
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   client,
   createTables,
@@ -255,4 +286,5 @@ module.exports = {
   deleteFoodItem,
   deleteUserFoodItem,
   authenticate,
+  isLoggedIn,
 };

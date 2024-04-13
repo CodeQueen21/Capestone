@@ -4,6 +4,7 @@ const {
   fetchSingleUser,
   updateUser,
   authenticate,
+  isLoggedIn,
 } = require("../db");
 const express = require("express");
 const usersRouter = express.Router();
@@ -11,6 +12,14 @@ const usersRouter = express.Router();
 usersRouter.get("/", async (req, res, next) => {
   try {
     res.send(await fetchUsers());
+  } catch (error) {
+    next(error);
+  }
+});
+
+usersRouter.get("/me", isLoggedIn, async (req, res, next) => {
+  try {
+    res.send("endpoint reached");
   } catch (error) {
     next(error);
   }
