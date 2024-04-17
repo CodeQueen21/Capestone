@@ -37,51 +37,118 @@ const seedUsers = async () => {
 const seedFoodItems = async () => {
   return await Promise.all([
     createFoodItem({
-      name: "pizza",
-      description: "im a pizza",
+      name: "Pepperoni Pizza",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis ex et enim tempor commodo. Morbi dapibus mi turpis, nec interdum risus vehicula sed. Aenean molestie dolor in odio pulvinar commodo.",
       image: "pizza.jpg",
-      category: "pizzas",
-      price: 6,
-      inventory: 10,
+      category: "pizza",
+      price: 20,
+      inventory: 3,
     }),
     createFoodItem({
-      name: "spaghetti",
-      description: "im spahgetti",
+      name: "Cheese Pizza",
+      description:
+        "Donec euismod lorem vitae ex eleifend, pellentesque rutrum mauris sagittis. Vivamus interdum nulla est, vel lobortis tortor consequat vel.",
+      image: "cheese.jpeg",
+      category: "pizza",
+      price: 18,
+      inventory: 3,
+    }),
+    createFoodItem({
+      name: "Hawaiian Pizza",
+      description:
+        "Pellentesque et rutrum lectus, in sodales turpis. Fusce ornare nisl eget elit fermentum, vel fringilla elit ornare.",
+      image: "hawaiin.jpeg",
+      category: "pizza",
+      price: 25,
+      inventory: 3,
+    }),
+    createFoodItem({
+      name: "Spaghetti",
+      description:
+        "Mauris eleifend sem nunc, ac convallis tellus convallis et. Cras eget eleifend lacus. Duis non volutpat augue",
       image: "spaghetti.jpeg",
-      category: "pastas",
-      price: 10,
-      inventory: 10,
+      category: "pasta",
+      price: 15,
+      inventory: 3,
     }),
     createFoodItem({
-      name: "salad",
-      description: "im a salad",
-      image: "salad.jpg",
-      category: "salads",
-      price: 6,
-      inventory: 10,
+      name: "Chicken Alfredo",
+      description:
+        "Donec vitae risus id augue suscipit mattis nec accumsan lectus. Sed ornare arcu libero, a cursus arcu tincidunt in. ",
+      image: "alfredo.jpeg",
+      category: "pasta",
+      price: 25,
+      inventory: 3,
+    }),
+    createFoodItem({
+      name: "Lasagna",
+      description:
+        "Nullam congue mollis nibh et placerat. Fusce maximus tincidunt convallis.",
+      image: "lasagna.jpeg",
+      category: "pasta",
+      price: 25,
+      inventory: 3,
+    }),
+    createFoodItem({
+      name: "Greek Salad",
+      description:
+        "Etiam finibus libero est. Mauris facilisis rutrum nisl, sed dignissim lectus congue a.",
+      image: "greek.jpeg",
+      category: "salad",
+      price: 15,
+      inventory: 3,
+    }),
+    createFoodItem({
+      name: "Ceaser Salad",
+      description:
+        "Aliquam mollis velit neque, id mollis urna vestibulum id. Proin semper nulla quam, vel dapibus enim accumsan vitae.",
+      image: "ceaser.jpeg",
+      category: "salad",
+      price: 15,
+      inventory: 3,
+    }),
+    createFoodItem({
+      name: "House Salad",
+      description:
+        "Duis ut nisl ex. Nam metus tellus, finibus sit amet malesuada id, sollicitudin ac purus. Vivamus nisl ex, cursus at neque eget, dapibus imperdiet enim.",
+      image: "house.jpeg",
+      category: "salad",
+      price: 12,
+      inventory: 3,
     }),
   ]);
 };
 
 const seedUserFoodItems = async (users, foodItems) => {
   const [Kayla, Dave, Sarah] = users;
-  const [pizza, spaghetti, salad] = foodItems;
+  const [
+    pepperoni,
+    cheese,
+    hawaiin,
+    spaghetti,
+    alfredo,
+    lasagna,
+    greek,
+    ceaser,
+    house,
+  ] = foodItems;
   return await Promise.all([
     createUserFoodItems({
       user_id: Kayla.id,
-      foodItem_id: salad.id,
+      foodItem_id: cheese.id,
       quantity: 1,
       purchased: false,
     }),
     createUserFoodItems({
       user_id: Kayla.id,
-      foodItem_id: pizza.id,
+      foodItem_id: pepperoni.id,
       quantity: 1,
       purchased: false,
     }),
     createUserFoodItems({
       user_id: Sarah.id,
-      foodItem_id: salad.id,
+      foodItem_id: greek.id,
       quantity: 1,
       purchased: false,
     }),
@@ -94,5 +161,5 @@ module.exports = async () => {
   const users = await seedUsers();
   const foodItems = await seedFoodItems();
   const userFoodItems = await seedUserFoodItems(users, foodItems);
-  console.log(users);
+  console.log(userFoodItems);
 };

@@ -242,7 +242,7 @@ const findUserWithToken = async (token) => {
     const payload = await jwt.verify(token, JWT);
     const id = payload.id;
     const SQL = `
-        SELECT id, email FROM users WHERE id = $1;
+        SELECT id, firstName, lastName, email, phoneNumber, is_admin FROM users WHERE id = $1;
         `;
     const response = await client.query(SQL, [id]);
     if (!response.rows.length) {

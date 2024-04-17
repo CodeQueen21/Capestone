@@ -2,13 +2,14 @@ const { client } = require("./db");
 const seed = require("./seed");
 const path = require("path");
 const express = require("express");
+const cors = require("cors");
 const port = process.env.PORT || 3000;
 const apiRouter = require("./api");
 
 const app = express();
 app.use(require("morgan")("dev"));
 app.use(express.json());
-
+app.use(cors());
 app.use(express.static(path.join(__dirname, "images")));
 app.use("/api", apiRouter);
 
