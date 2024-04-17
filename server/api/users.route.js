@@ -9,7 +9,7 @@ const {
 const express = require("express");
 const usersRouter = express.Router();
 
-usersRouter.get("/", isLoggedIn, async (req, res, next) => {
+usersRouter.get("/", async (req, res, next) => {
   try {
     res.send(await fetchUsers());
   } catch (error) {
@@ -19,7 +19,7 @@ usersRouter.get("/", isLoggedIn, async (req, res, next) => {
 
 usersRouter.get("/me", isLoggedIn, async (req, res, next) => {
   try {
-    res.send("endpoint reached");
+    res.send(req.user);
   } catch (error) {
     next(error);
   }

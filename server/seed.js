@@ -37,6 +37,51 @@ const seedUsers = async () => {
 const seedFoodItems = async () => {
   return await Promise.all([
     createFoodItem({
+<<<<<<< HEAD
+      name: "Pepperoni Pizza",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis ex et enim tempor commodo. Morbi dapibus mi turpis, nec interdum risus vehicula sed. Aenean molestie dolor in odio pulvinar commodo.",
+      image: "pizza.jpg",
+      category: "pizza",
+      price: 20,
+      inventory: 3,
+    }),
+    createFoodItem({
+      name: "Cheese Pizza",
+      description:
+        "Donec euismod lorem vitae ex eleifend, pellentesque rutrum mauris sagittis. Vivamus interdum nulla est, vel lobortis tortor consequat vel.",
+      image: "cheese.jpeg",
+      category: "pizza",
+      price: 18,
+      inventory: 3,
+    }),
+    createFoodItem({
+      name: "Hawaiian Pizza",
+      description:
+        "Pellentesque et rutrum lectus, in sodales turpis. Fusce ornare nisl eget elit fermentum, vel fringilla elit ornare.",
+      image: "hawaiin.jpeg",
+      category: "pizza",
+      price: 25,
+      inventory: 3,
+    }),
+    createFoodItem({
+      name: "Spaghetti",
+      description:
+        "Mauris eleifend sem nunc, ac convallis tellus convallis et. Cras eget eleifend lacus. Duis non volutpat augue",
+      image: "spaghetti.jpeg",
+      category: "pasta",
+      price: 15,
+      inventory: 3,
+    }),
+    createFoodItem({
+      name: "Chicken Alfredo",
+      description:
+        "Donec vitae risus id augue suscipit mattis nec accumsan lectus. Sed ornare arcu libero, a cursus arcu tincidunt in. ",
+      image: "alfredo.jpeg",
+      category: "pasta",
+      price: 25,
+      inventory: 3,
+=======
       name: "Cheese Pizza",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis enim non libero convallis, id ornare turpis venenatis. Ut fermentum quis nisi ut vestibulum. Sed vitae justo eros. Vestibulum mattis est eros.",
@@ -89,10 +134,18 @@ const seedFoodItems = async () => {
       category: "pasta",
       price: 25,
       inventory: 10,
+>>>>>>> main
     }),
     createFoodItem({
       name: "Lasagna",
       description:
+<<<<<<< HEAD
+        "Nullam congue mollis nibh et placerat. Fusce maximus tincidunt convallis.",
+      image: "lasagna.jpeg",
+      category: "pasta",
+      price: 25,
+      inventory: 3,
+=======
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis enim non libero convallis, id ornare turpis venenatis. Ut fermentum quis nisi ut vestibulum. Sed vitae justo eros. Vestibulum mattis est eros.",
       image: "lasagna.jpeg",
       category: "pasta",
@@ -116,19 +169,44 @@ const seedFoodItems = async () => {
       category: "salad",
       price: 20,
       inventory: 10,
+>>>>>>> main
     }),
     createFoodItem({
       name: "Greek Salad",
       description:
+<<<<<<< HEAD
+        "Etiam finibus libero est. Mauris facilisis rutrum nisl, sed dignissim lectus congue a.",
+      image: "greek.jpeg",
+      category: "salad",
+      price: 15,
+      inventory: 3,
+=======
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis enim non libero convallis, id ornare turpis venenatis. Ut fermentum quis nisi ut vestibulum. Sed vitae justo eros. Vestibulum mattis est eros.",
       image: "greek.jpeg",
       category: "salad",
       price: 25,
       inventory: 10,
+>>>>>>> main
     }),
     createFoodItem({
       name: "Ceaser Salad",
       description:
+<<<<<<< HEAD
+        "Aliquam mollis velit neque, id mollis urna vestibulum id. Proin semper nulla quam, vel dapibus enim accumsan vitae.",
+      image: "ceaser.jpeg",
+      category: "salad",
+      price: 15,
+      inventory: 3,
+    }),
+    createFoodItem({
+      name: "House Salad",
+      description:
+        "Duis ut nisl ex. Nam metus tellus, finibus sit amet malesuada id, sollicitudin ac purus. Vivamus nisl ex, cursus at neque eget, dapibus imperdiet enim.",
+      image: "house.jpeg",
+      category: "salad",
+      price: 12,
+      inventory: 3,
+=======
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis enim non libero convallis, id ornare turpis venenatis. Ut fermentum quis nisi ut vestibulum. Sed vitae justo eros. Vestibulum mattis est eros.",
       image: "ceaser.jpeg",
       category: "salad",
@@ -152,6 +230,7 @@ const seedFoodItems = async () => {
       category: "dessert",
       price: 15,
       inventory: 10,
+>>>>>>> main
     }),
   ]);
 };
@@ -159,6 +238,17 @@ const seedFoodItems = async () => {
 const seedUserFoodItems = async (users, foodItems) => {
   const [Kayla, Dave, Sarah] = users;
   const [
+<<<<<<< HEAD
+    pepperoni,
+    cheese,
+    hawaiin,
+    spaghetti,
+    alfredo,
+    lasagna,
+    greek,
+    ceaser,
+    house,
+=======
     Cheese,
     pepperoni,
     hawaiian,
@@ -172,17 +262,26 @@ const seedUserFoodItems = async (users, foodItems) => {
     ceaser,
     Tiramsu,
     cake,
+>>>>>>> main
   ] = foodItems;
   return await Promise.all([
     createUserFoodItems({
       user_id: Kayla.id,
+<<<<<<< HEAD
+      foodItem_id: cheese.id,
+=======
       foodItem_id: cake.id,
+>>>>>>> main
       quantity: 1,
       purchased: false,
     }),
     createUserFoodItems({
       user_id: Kayla.id,
+<<<<<<< HEAD
+      foodItem_id: pepperoni.id,
+=======
       foodItem_id: alfredo.id,
+>>>>>>> main
       quantity: 1,
       purchased: false,
     }),
@@ -201,5 +300,5 @@ module.exports = async () => {
   const users = await seedUsers();
   const foodItems = await seedFoodItems();
   const userFoodItems = await seedUserFoodItems(users, foodItems);
-  console.log(users);
+  console.log(userFoodItems);
 };
