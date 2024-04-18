@@ -37,7 +37,6 @@ const seedUsers = async () => {
 const seedFoodItems = async () => {
   return await Promise.all([
     createFoodItem({
-<<<<<<< HEAD
       name: "Pepperoni Pizza",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis ex et enim tempor commodo. Morbi dapibus mi turpis, nec interdum risus vehicula sed. Aenean molestie dolor in odio pulvinar commodo.",
@@ -81,117 +80,28 @@ const seedFoodItems = async () => {
       category: "pasta",
       price: 25,
       inventory: 3,
-=======
-      name: "Cheese Pizza",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis enim non libero convallis, id ornare turpis venenatis. Ut fermentum quis nisi ut vestibulum. Sed vitae justo eros. Vestibulum mattis est eros.",
-      image: "cheese.jpg",
-      category: "pizza",
-      price: 15,
-      inventory: 10,
-    }),
-    createFoodItem({
-      name: "Pepperoni Pizza",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis enim non libero convallis, id ornare turpis venenatis. Ut fermentum quis nisi ut vestibulum. Sed vitae justo eros. Vestibulum mattis est eros.",
-      image: "pepperoni.jpg",
-      category: "pizza",
-      price: 20,
-      inventory: 10,
-    }),
-    createFoodItem({
-      name: "Hawaiian Pizza",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis enim non libero convallis, id ornare turpis venenatis. Ut fermentum quis nisi ut vestibulum. Sed vitae justo eros. Vestibulum mattis est eros.",
-      image: "hawaiian.jpg",
-      category: "pizza",
-      price: 25,
-      inventory: 10,
-    }),
-    createFoodItem({
-      name: "MeatLover's Pizza",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis enim non libero convallis, id ornare turpis venenatis. Ut fermentum quis nisi ut vestibulum. Sed vitae justo eros. Vestibulum mattis est eros.",
-      image: "meat.jpg",
-      category: "pizza",
-      price: 25,
-      inventory: 10,
-    }),
-    createFoodItem({
-      name: "Spaghetti",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis enim non libero convallis, id ornare turpis venenatis. Ut fermentum quis nisi ut vestibulum. Sed vitae justo eros. Vestibulum mattis est eros.",
-      image: "hawaiian.jpg",
-      category: "pasta",
-      price: 20,
-      inventory: 10,
-    }),
-    createFoodItem({
-      name: "Shrimp Alfredo",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis enim non libero convallis, id ornare turpis venenatis. Ut fermentum quis nisi ut vestibulum. Sed vitae justo eros. Vestibulum mattis est eros.",
-      image: "alfredo.webp",
-      category: "pasta",
-      price: 25,
-      inventory: 10,
->>>>>>> main
     }),
     createFoodItem({
       name: "Lasagna",
       description:
-<<<<<<< HEAD
         "Nullam congue mollis nibh et placerat. Fusce maximus tincidunt convallis.",
       image: "lasagna.jpeg",
       category: "pasta",
       price: 25,
       inventory: 3,
-=======
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis enim non libero convallis, id ornare turpis venenatis. Ut fermentum quis nisi ut vestibulum. Sed vitae justo eros. Vestibulum mattis est eros.",
-      image: "lasagna.jpeg",
-      category: "pasta",
-      price: 20,
-      inventory: 10,
-    }),
-    createFoodItem({
-      name: "Stuffed Shells",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis enim non libero convallis, id ornare turpis venenatis. Ut fermentum quis nisi ut vestibulum. Sed vitae justo eros. Vestibulum mattis est eros.",
-      image: "shells.jpeg",
-      category: "pasta",
-      price: 15,
-      inventory: 10,
-    }),
-    createFoodItem({
-      name: "Garden Salad",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis enim non libero convallis, id ornare turpis venenatis. Ut fermentum quis nisi ut vestibulum. Sed vitae justo eros. Vestibulum mattis est eros.",
-      image: "garden.jpeg",
-      category: "salad",
-      price: 20,
-      inventory: 10,
->>>>>>> main
     }),
     createFoodItem({
       name: "Greek Salad",
       description:
-<<<<<<< HEAD
         "Etiam finibus libero est. Mauris facilisis rutrum nisl, sed dignissim lectus congue a.",
       image: "greek.jpeg",
       category: "salad",
       price: 15,
       inventory: 3,
-=======
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis enim non libero convallis, id ornare turpis venenatis. Ut fermentum quis nisi ut vestibulum. Sed vitae justo eros. Vestibulum mattis est eros.",
-      image: "greek.jpeg",
-      category: "salad",
-      price: 25,
-      inventory: 10,
->>>>>>> main
     }),
     createFoodItem({
       name: "Ceaser Salad",
       description:
-<<<<<<< HEAD
         "Aliquam mollis velit neque, id mollis urna vestibulum id. Proin semper nulla quam, vel dapibus enim accumsan vitae.",
       image: "ceaser.jpeg",
       category: "salad",
@@ -206,31 +116,6 @@ const seedFoodItems = async () => {
       category: "salad",
       price: 12,
       inventory: 3,
-=======
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis enim non libero convallis, id ornare turpis venenatis. Ut fermentum quis nisi ut vestibulum. Sed vitae justo eros. Vestibulum mattis est eros.",
-      image: "ceaser.jpeg",
-      category: "salad",
-      price: 20,
-      inventory: 10,
-    }),
-    createFoodItem({
-      name: "Tiramsu",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis enim non libero convallis, id ornare turpis venenatis. Ut fermentum quis nisi ut vestibulum. Sed vitae justo eros. Vestibulum mattis est eros.",
-      image: "tiramsu.jpeg",
-      category: "dessert",
-      price: 15,
-      inventory: 10,
-    }),
-    createFoodItem({
-      name: "Red Velvet Cake",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis enim non libero convallis, id ornare turpis venenatis. Ut fermentum quis nisi ut vestibulum. Sed vitae justo eros. Vestibulum mattis est eros.",
-      image: "redVelvet.jpeg",
-      category: "dessert",
-      price: 15,
-      inventory: 10,
->>>>>>> main
     }),
   ]);
 };
@@ -238,7 +123,6 @@ const seedFoodItems = async () => {
 const seedUserFoodItems = async (users, foodItems) => {
   const [Kayla, Dave, Sarah] = users;
   const [
-<<<<<<< HEAD
     pepperoni,
     cheese,
     hawaiin,
@@ -248,40 +132,17 @@ const seedUserFoodItems = async (users, foodItems) => {
     greek,
     ceaser,
     house,
-=======
-    Cheese,
-    pepperoni,
-    hawaiian,
-    MeatLover,
-    Spaghetti,
-    alfredo,
-    lasagna,
-    shells,
-    garden,
-    greek,
-    ceaser,
-    Tiramsu,
-    cake,
->>>>>>> main
   ] = foodItems;
   return await Promise.all([
     createUserFoodItems({
       user_id: Kayla.id,
-<<<<<<< HEAD
       foodItem_id: cheese.id,
-=======
-      foodItem_id: cake.id,
->>>>>>> main
       quantity: 1,
       purchased: false,
     }),
     createUserFoodItems({
       user_id: Kayla.id,
-<<<<<<< HEAD
       foodItem_id: pepperoni.id,
-=======
-      foodItem_id: alfredo.id,
->>>>>>> main
       quantity: 1,
       purchased: false,
     }),
