@@ -58,7 +58,7 @@ const seedFoodItems = async () => {
       name: "Hawaiian Pizza",
       description:
         "Pellentesque et rutrum lectus, in sodales turpis. Fusce ornare nisl eget elit fermentum, vel fringilla elit ornare.",
-      image: "hawaiin.jpeg",
+      image: "hawaiian.jpeg",
       category: "pizza",
       price: 25,
       inventory: 3,
@@ -117,6 +117,24 @@ const seedFoodItems = async () => {
       price: 12,
       inventory: 3,
     }),
+    createFoodItem({
+      name: "Red Velvet Cake",
+      description:
+        "Vestibulum nulla magna, maximus at elit sit amet, molestie rhoncus sem.",
+      image: "redVelevet.jpeg",
+      category: "dessert",
+      price: 20,
+      inventory: 3,
+    }),
+    createFoodItem({
+      name: "Tiramisu",
+      description:
+        "Duis ut nisl ex. Nam metus tellus, finibus sit amet malesuada id, sollicitudin ac purus. Vivamus nisl ex, cursus at neque eget, dapibus imperdiet enim.",
+      image: "tiramisu.jpeg",
+      category: "dessert",
+      price: 20,
+      inventory: 3,
+    }),
   ]);
 };
 
@@ -125,7 +143,7 @@ const seedUserFoodItems = async (users, foodItems) => {
   const [
     pepperoni,
     cheese,
-    hawaiin,
+    hawaiian,
     spaghetti,
     alfredo,
     lasagna,
@@ -161,5 +179,5 @@ module.exports = async () => {
   const users = await seedUsers();
   const foodItems = await seedFoodItems();
   const userFoodItems = await seedUserFoodItems(users, foodItems);
-  console.log(userFoodItems);
+  console.log(foodItems);
 };
