@@ -150,6 +150,8 @@ const seedUserFoodItems = async (users, foodItems) => {
     greek,
     ceaser,
     house,
+    cake,
+    tiramisu,
   ] = foodItems;
   return await Promise.all([
     createUserFoodItems({
