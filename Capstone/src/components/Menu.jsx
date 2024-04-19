@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Menu({ foodItems }) {
+  const navigate = useNavigate();
+
   return (
     <div id="menu-cataloge">
       <h1>Menu</h1>
@@ -10,7 +14,9 @@ export default function Menu({ foodItems }) {
                 <h4>{foodItem.name}</h4>
                 <img src={foodItem.image} />
                 <div>
-                  <button>Details</button>
+                  <button onClick={() => navigate(`/foodItems/${foodItem.id}`)}>
+                    Details
+                  </button>
                 </div>
               </div>
             );

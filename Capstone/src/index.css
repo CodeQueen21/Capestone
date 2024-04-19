@@ -19,7 +19,6 @@ body {
 }
 #navbar {
   border: 1px black solid;
-
   background-color: rgba(193, 1, 1, 0.796);
   height: 50px;
   width: 100%;
@@ -67,6 +66,9 @@ body {
 
 .foodItem {
   margin: 50px 20px 50px 20px;
+  background-color: rgb(193, 1, 1);
+  padding: 0 20px 0 20px;
+  border-radius: 20px;
 }
 
 .foodItem img {
@@ -76,10 +78,11 @@ body {
 
 .foodItem button {
   margin: 10px 0 10px 0;
-  background-color: rgb(163, 163, 163);
   padding: 10px;
+
   border: 1px black solid;
   border-radius: 20px;
+  font-weight: bold;
 }
 
 button:hover {
