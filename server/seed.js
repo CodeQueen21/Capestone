@@ -40,7 +40,7 @@ const seedFoodItems = async () => {
       name: "Pepperoni Pizza",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis ex et enim tempor commodo. Morbi dapibus mi turpis, nec interdum risus vehicula sed. Aenean molestie dolor in odio pulvinar commodo.",
-      image: "pizza.jpg",
+      image: "http://localhost:3000/pepperoni.jpg",
       category: "pizza",
       price: 20,
       inventory: 3,
@@ -49,7 +49,7 @@ const seedFoodItems = async () => {
       name: "Cheese Pizza",
       description:
         "Donec euismod lorem vitae ex eleifend, pellentesque rutrum mauris sagittis. Vivamus interdum nulla est, vel lobortis tortor consequat vel.",
-      image: "cheese.jpeg",
+      image: "http://localhost:3000/cheese.jpeg",
       category: "pizza",
       price: 18,
       inventory: 3,
@@ -58,7 +58,7 @@ const seedFoodItems = async () => {
       name: "Hawaiian Pizza",
       description:
         "Pellentesque et rutrum lectus, in sodales turpis. Fusce ornare nisl eget elit fermentum, vel fringilla elit ornare.",
-      image: "hawaiian.jpeg",
+      image: "http://localhost:3000/hawaiian.jpeg",
       category: "pizza",
       price: 25,
       inventory: 3,
@@ -67,7 +67,7 @@ const seedFoodItems = async () => {
       name: "Spaghetti",
       description:
         "Mauris eleifend sem nunc, ac convallis tellus convallis et. Cras eget eleifend lacus. Duis non volutpat augue",
-      image: "spaghetti.jpeg",
+      image: "http://localhost:3000/spaghetti.jpeg",
       category: "pasta",
       price: 15,
       inventory: 3,
@@ -76,7 +76,7 @@ const seedFoodItems = async () => {
       name: "Chicken Alfredo",
       description:
         "Donec vitae risus id augue suscipit mattis nec accumsan lectus. Sed ornare arcu libero, a cursus arcu tincidunt in. ",
-      image: "alfredo.jpeg",
+      image: "http://localhost:3000/alfredo.jpeg",
       category: "pasta",
       price: 25,
       inventory: 3,
@@ -85,7 +85,7 @@ const seedFoodItems = async () => {
       name: "Lasagna",
       description:
         "Nullam congue mollis nibh et placerat. Fusce maximus tincidunt convallis.",
-      image: "lasagna.jpeg",
+      image: "http://localhost:3000/lasagna.jpeg",
       category: "pasta",
       price: 25,
       inventory: 3,
@@ -94,7 +94,7 @@ const seedFoodItems = async () => {
       name: "Greek Salad",
       description:
         "Etiam finibus libero est. Mauris facilisis rutrum nisl, sed dignissim lectus congue a.",
-      image: "greek.jpeg",
+      image: "http://localhost:3000/greek.jpeg",
       category: "salad",
       price: 15,
       inventory: 3,
@@ -103,7 +103,7 @@ const seedFoodItems = async () => {
       name: "Ceaser Salad",
       description:
         "Aliquam mollis velit neque, id mollis urna vestibulum id. Proin semper nulla quam, vel dapibus enim accumsan vitae.",
-      image: "ceaser.jpeg",
+      image: "http://localhost:3000/ceaser.jpeg",
       category: "salad",
       price: 15,
       inventory: 3,
@@ -112,7 +112,7 @@ const seedFoodItems = async () => {
       name: "House Salad",
       description:
         "Duis ut nisl ex. Nam metus tellus, finibus sit amet malesuada id, sollicitudin ac purus. Vivamus nisl ex, cursus at neque eget, dapibus imperdiet enim.",
-      image: "house.jpeg",
+      image: "http://localhost:3000/house.jpeg",
       category: "salad",
       price: 12,
       inventory: 3,
@@ -121,7 +121,7 @@ const seedFoodItems = async () => {
       name: "Red Velvet Cake",
       description:
         "Vestibulum nulla magna, maximus at elit sit amet, molestie rhoncus sem.",
-      image: "redVelevet.jpeg",
+      image: "http://localhost:3000/redVelvet.jpeg",
       category: "dessert",
       price: 20,
       inventory: 3,
@@ -130,7 +130,7 @@ const seedFoodItems = async () => {
       name: "Tiramisu",
       description:
         "Duis ut nisl ex. Nam metus tellus, finibus sit amet malesuada id, sollicitudin ac purus. Vivamus nisl ex, cursus at neque eget, dapibus imperdiet enim.",
-      image: "tiramisu.jpeg",
+      image: "http://localhost:3000/tiramisu.jpeg",
       category: "dessert",
       price: 20,
       inventory: 3,
