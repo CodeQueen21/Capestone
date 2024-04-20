@@ -76,10 +76,9 @@ body {
   width: 200px;
 }
 
-.foodItem button {
+button {
   margin: 10px 0 10px 0;
   padding: 10px;
-
   border: 1px black solid;
   border-radius: 20px;
   font-weight: bold;
@@ -91,7 +90,23 @@ button:hover {
 }
 
 #foodItem {
-  color: white;
+  text-align: center;
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 10%;
+  padding: 0 10px;
+  border: black solid 1px;
+  border-radius: 5px;
+  background-color: rgb(193, 1, 1);
+}
+
+#foodItem img {
+  height: 190px;
+  width: 170px;
+}
+
+span {
+  font-weight: bold;
 }
 
 #registerForm {

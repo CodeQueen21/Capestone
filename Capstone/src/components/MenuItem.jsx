@@ -23,14 +23,13 @@ export default function MenuItem() {
     <div>
       {foodItem && (
         <div id="foodItem">
-          <h4>{foodItem.name}</h4>
+          <h2>{foodItem.name}</h2>
           <img src={foodItem.image} />
           <p>
             <span>Description: </span> {foodItem.description}
           </p>
           <p>
-            <span>Price: </span>
-            {foodItem.price}
+            <span>Price: </span>${foodItem.price}
           </p>
           <button>Add to Cart</button>
         </div>

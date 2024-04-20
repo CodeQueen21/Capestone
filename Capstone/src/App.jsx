@@ -22,8 +22,8 @@ function App() {
   return (
     <>
       <Navigations />
-      {/* <Register setToken={setToken} />
-      <Menu foodItems={foodItems} /> */}
+      {/* <Register setToken={setToken} />*/}
+      {/* <Menu foodItems={foodItems} /> */}
       {/* <Home /> */}
       <Routes>
         <Route path="/" element={<Home />} />
