@@ -39,20 +39,20 @@ body {
   text-decoration: underline;
 }
 
-#search {
+#search-container {
   display: flex;
-  justify-content: end;
+  justify-content: start;
+  margin: 20px 0 0 10px;
 }
 
-#search input {
-  position: relative;
-  bottom: 15px;
-  right: 10px;
-  height: 20px;
-  width: 200px;
+#search-container input {
+  height: 30px;
+  width: 25%;
+  border-radius: 5px;
+  border: black solid 1px;
 }
 
-#menu-cataloge {
+#menu-catalog {
   text-align: center;
 }
 

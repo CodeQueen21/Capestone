@@ -13,9 +13,6 @@ export default function Navigations() {
         <Link className="link">Account</Link>
         <Link className="link">Login</Link>
       </div>
-      <div id="search">
-        <input type="text" placeholder="Search.." />
-      </div>
     </div>
   );
 }
