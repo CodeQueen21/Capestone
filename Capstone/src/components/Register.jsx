@@ -7,7 +7,7 @@ export default function Register({ setToken }) {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
-  const [isAdmin, setIsAdmin] = useState("");
+  const [isAdmin, setIsAdmin] = useState("false");
   const [error, setError] = useState("");
 
   async function handleSubmit(e) {
@@ -31,9 +31,9 @@ export default function Register({ setToken }) {
         phoneNumber: phoneNumber,
         email: email,
         password: password,
+        isAdmin: isAdmin,
       };
       const result = await createUser(userData);
-      //   console.log(result);
       setToken(result.token);
     } catch (error) {
       setError(error.message);

@@ -22,8 +22,6 @@ const fetchSingleFoodItem = async (foodItemId) => {
     }
 
     const result = await response.json();
-    console.log(foodItemId);
-    console.log(result);
     return result;
   } catch (error) {
     console.error("Error:", error);
@@ -47,4 +45,20 @@ const createUser = async (userData) => {
   }
 };
 
-export { fetchFoodItems, fetchSingleFoodItem, createUser };
+const fetchUser = async (userData) => {
+  try {
+    const response = await fetch("http://localhost:3000/api/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("Error", error);
+  }
+};
+
+export { fetchFoodItems, fetchSingleFoodItem, fetchUser, createUser, userData };

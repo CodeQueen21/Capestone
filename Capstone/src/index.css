@@ -41,7 +41,7 @@ body {
 
 #search-container {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   margin: 20px 0 0 10px;
 }
 
@@ -109,6 +109,22 @@ span {
   font-weight: bold;
 }
 
-#registerForm {
+#registerForm,
+#loginForm {
   background-color: rgb(193, 1, 1);
+  margin: 5%;
+  padding-bottom: 5%;
+  text-align: center;
+  border: black 1px solid;
+  border-radius: 5px;
+}
+
+#registerForm label,
+#loginForm label {
+  margin-left: 20px;
+}
+
+#registerForm button,
+#loginForm button {
+  margin-left: 20px;
 }
