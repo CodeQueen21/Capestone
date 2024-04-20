@@ -89,3 +89,11 @@ button:hover {
   background-color: rgb(194, 193, 193);
   cursor: pointer;
 }
+
+#foodItem {
+  color: white;
+}
+
+#registerForm {
+  background-color: rgb(193, 1, 1);
+}
