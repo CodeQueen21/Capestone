@@ -7,6 +7,7 @@ import Menu from "./components/Menu";
 import MenuItem from "./components/MenuItem";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import Account from "./components/Account";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -21,16 +22,19 @@ function App() {
 
   return (
     <>
-      <Navigations />
-      <Register setToken={setToken} />
+      <Navigations isLoggedI={token} />
+      {/* <Register setToken={setToken} />
+      <Login setToken={setToken} /> */}
+      {/* <Account token={token} /> */}
       {/* <Menu foodItems={foodItems} /> */}
-      {/* <Home /> */}
-      <Login setToken={setToken} />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/foodItems" element={<Menu foodItems={foodItems} />} />
         <Route path="/foodItems/:id" element={<MenuItem />} />
-        <Route path="/users/me" element={<Login setToken={setToken} />} />
+        <Route path="/users" element={<Register setToken={setToken} />} />
+        <Route path="/login" element={<Login setToken={setToken} />} />
+        <Route path="/me" element={<Account token={token} />} />
       </Routes>
     </>
   );

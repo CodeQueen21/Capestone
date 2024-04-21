@@ -109,10 +109,19 @@ span {
   font-weight: bold;
 }
 
+#registerForm {
+  margin: 5%;
+}
+
+#loginForm {
+  width: 30rem;
+  margin: 5% auto;
+}
+
 #registerForm,
 #loginForm {
   background-color: rgb(193, 1, 1);
-  margin: 5%;
+
   padding-bottom: 5%;
   text-align: center;
   border: black 1px solid;
@@ -127,4 +136,14 @@ span {
 #registerForm button,
 #loginForm button {
   margin-left: 20px;
+}
+
+#account {
+  height: 15rem;
+  width: 30rem;
+  margin: 0 auto;
+  background-color: rgb(193, 1, 1);
+  text-align: center;
+  border: black solid 1px;
+  border-radius: 5px;
 }

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function Navigations() {
+export default function Navigations(props) {
   return (
     <div id="navbar">
       <div id="links">
@@ -10,8 +10,15 @@ export default function Navigations() {
         <Link className="link" to="/foodItems">
           Menu
         </Link>
-        <Link className="link">Account</Link>
-        <Link className="link">Login</Link>
+        {props.isLoggedIn ? (
+          <Link className="link" to="/me">
+            Account
+          </Link>
+        ) : (
+          <Link className="link" to="/login">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
