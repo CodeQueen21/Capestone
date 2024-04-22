@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchSingleFoodItem } from "../ajaxHelpers";
 
-export default function MenuItem() {
+export default function MenuItem(props) {
   const [foodItem, setFoodItem] = useState(null);
   const { id } = useParams();
   async function fetchFoodItem() {
@@ -31,7 +31,11 @@ export default function MenuItem() {
           <p>
             <span>Price: </span>${foodItem.price}
           </p>
-          <button>Add to Cart</button>
+          {props.userToken ? (
+            <button>Add to Cart</button>
+          ) : (
+            <p>Please log in to purchase</p>
+          )}
         </div>
       )}
     </div>

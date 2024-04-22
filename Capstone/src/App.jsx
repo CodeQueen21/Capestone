@@ -32,7 +32,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/foodItems" element={<Menu foodItems={foodItems} />} />
-        <Route path="/foodItems/:id" element={<MenuItem />} />
+        <Route
+          path="/foodItems/:id"
+          element={<MenuItem userToken={userToken} />}
+        />
         <Route path="/users" element={<Register setToken={setToken} />} />
         <Route path="/login" element={<Login setUserToken={setUserToken} />} />
         <Route path="/me" element={<Account token={token} />} />
