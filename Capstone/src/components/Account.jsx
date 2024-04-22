@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function Account({ userToken }) {
-  const [user, setUser] = useState("");
+export default function Account({ userToken, user, setUser }) {
   const [error, setError] = useState("");
 
   const fetchUserDetails = async () => {

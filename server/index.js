@@ -11,10 +11,10 @@ app.use(require("morgan")("dev"));
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname, "images")));
-app.use(express.static(path.join(__dirname, "../Capstone/dist/assets")));
+app.use(express.static(path.join(__dirname, "..", "Capstone", "dist")));
 app.use(
   "/",
-  express.static(path.join(__dirname, "../Capstone/dist/index.html"))
+  express.static(path.join(__dirname, "..", "Capstone", "dist", "index.html"))
 );
 app.use("/api", apiRouter);
 

@@ -19,6 +19,9 @@ export default function Navigations(props) {
             Login
           </Link>
         )}
+        <Link className="link" to="">
+          Cart
+        </Link>
       </div>
     </div>
   );

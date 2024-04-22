@@ -8,10 +8,12 @@ import MenuItem from "./components/MenuItem";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Account from "./components/Account";
+import Cart from "./components/Cart";
 
 function App() {
   const [token, setToken] = useState(null);
   const [userToken, setUserToken] = useState(null);
+  const [user, setUser] = useState("");
   const [foodItems, setFoodItems] = useState([]);
   async function fetchItems() {
     setFoodItems(await fetchFoodItems());
@@ -28,6 +30,7 @@ function App() {
       <Login setToken={setToken} /> */}
       {/* <Account token={token} /> */}
       {/* <Menu foodItems={foodItems} /> */}
+      <Cart />
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -38,7 +41,12 @@ function App() {
         />
         <Route path="/users" element={<Register setToken={setToken} />} />
         <Route path="/login" element={<Login setUserToken={setUserToken} />} />
-        <Route path="/me" element={<Account userToken={userToken} />} />
+        <Route
+          path="/me"
+          element={
+            <Account userToken={userToken} user={user} setUser={setUser} />
+          }
+        />
       </Routes>
     </>
   );

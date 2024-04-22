@@ -61,4 +61,39 @@ const fetchUser = async (userData) => {
   }
 };
 
-export { fetchFoodItems, fetchSingleFoodItem, fetchUser, createUser, userData };
+async function fetchUserFoodItems() {
+  try {
+    const response = await fetch("http://localhost:3000/api/userFoodItems");
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.log("Error:", error);
+  }
+}
+
+const createUserOrder = async (id, token) => {
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/userFoodItems/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        // body: JSON.stringify({
+        //   available: false,
+        // }),
+      }
+    );
+  } catch (error) {}
+};
+
+export {
+  fetchFoodItems,
+  fetchSingleFoodItem,
+  fetchUser,
+  createUser,
+  userData,
+  fetchUserFoodItems,
+};
