@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { fetchUser } from "../ajaxHelpers";
-// import { Register } from "/Register";
+import { useNavigate } from "react-router-dom";
 
-export default function Login({ setToken }) {
+export default function Login({ setUserToken }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,7 +20,7 @@ export default function Login({ setToken }) {
         throw Error(errorMessage);
       }
 
-      setToken(result.token);
+      setUserToken(result.token);
     } catch (error) {
       setError(error.message);
     }
@@ -46,7 +47,8 @@ export default function Login({ setToken }) {
         </form>
       </div>
       <div id="register-container">
-        {/* <Register setToken={setToken} /> */}
+        <h3>Not a member?</h3>
+        <button onClick={() => navigate(`/users`)}>Register here</button>
       </div>
     </>
   );

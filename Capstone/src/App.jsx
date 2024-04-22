@@ -11,18 +11,19 @@ import Account from "./components/Account";
 
 function App() {
   const [token, setToken] = useState(null);
+  const [userToken, setUserToken] = useState(null);
   const [foodItems, setFoodItems] = useState([]);
   async function fetchItems() {
     setFoodItems(await fetchFoodItems());
   }
-  console.log(token);
+  // console.log(token);
   useEffect(() => {
     fetchItems();
   }, []);
 
   return (
     <>
-      <Navigations isLoggedI={token} />
+      <Navigations isLoggedIn={userToken} />
       {/* <Register setToken={setToken} />
       <Login setToken={setToken} /> */}
       {/* <Account token={token} /> */}
@@ -33,7 +34,7 @@ function App() {
         <Route path="/foodItems" element={<Menu foodItems={foodItems} />} />
         <Route path="/foodItems/:id" element={<MenuItem />} />
         <Route path="/users" element={<Register setToken={setToken} />} />
-        <Route path="/login" element={<Login setToken={setToken} />} />
+        <Route path="/login" element={<Login setUserToken={setUserToken} />} />
         <Route path="/me" element={<Account token={token} />} />
       </Routes>
     </>
