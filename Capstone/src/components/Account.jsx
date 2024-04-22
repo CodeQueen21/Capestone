@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function Account({ token }) {
+export default function Account({ userToken }) {
   const [user, setUser] = useState("");
   const [error, setError] = useState("");
 
@@ -9,7 +9,7 @@ export default function Account({ token }) {
       const response = await fetch("http://localhost:3000/api/users/me", {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${userToken}`,
         },
       });
       if (!response.ok) {
@@ -22,13 +22,13 @@ export default function Account({ token }) {
     }
   };
   useEffect(() => {
-    if (token) {
+    if (userToken) {
       fetchUserDetails();
     }
-  }, [token]);
+  }, [userToken]);
 
-  if (!token) {
-    return <p class="errorMessage">Please log in to view this page.</p>;
+  if (!userToken) {
+    return <p className="errorMessage">Please log in to view this page.</p>;
   }
 
   if (error) {
@@ -36,7 +36,7 @@ export default function Account({ token }) {
   }
 
   if (!user) {
-    return <p class="errorMessage">this user does not exist</p>;
+    return <p className="errorMessage">this user does not exist</p>;
   }
   return (
     <>

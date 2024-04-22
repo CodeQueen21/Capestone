@@ -38,7 +38,7 @@ function App() {
         />
         <Route path="/users" element={<Register setToken={setToken} />} />
         <Route path="/login" element={<Login setUserToken={setUserToken} />} />
-        <Route path="/me" element={<Account token={token} />} />
+        <Route path="/me" element={<Account userToken={userToken} />} />
       </Routes>
     </>
   );
