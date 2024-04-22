@@ -118,6 +118,16 @@ span {
   margin: 5% auto;
 }
 
+#register-container {
+  text-align: center;
+  background-color: rgb(193, 1, 1);
+  width: 15rem;
+  height: 8rem;
+  margin: 5% auto;
+  border: 1px black solid;
+  border-radius: 5px;
+}
+
 #registerForm,
 #loginForm {
   background-color: rgb(193, 1, 1);
@@ -141,9 +151,15 @@ span {
 #account {
   height: 15rem;
   width: 30rem;
-  margin: 0 auto;
+  margin: 10% auto;
   background-color: rgb(193, 1, 1);
   text-align: center;
   border: black solid 1px;
   border-radius: 5px;
+}
+
+.errorMessage {
+  color: white;
+  text-align: center;
+  margin-top: 20%;
 }

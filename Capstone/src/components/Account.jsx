@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function Account({ token }) {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(null);
   const [error, setError] = useState("");
 
   const fetchUserDetails = async () => {
@@ -28,7 +28,7 @@ export default function Account({ token }) {
   }, [token]);
 
   if (!token) {
-    return <p>Please log in to view this page.</p>;
+    return <p class="errorMessage">Please log in to view this page.</p>;
   }
 
   if (error) {
@@ -36,7 +36,7 @@ export default function Account({ token }) {
   }
 
   if (!user) {
-    return <p>this user does not exist</p>;
+    return <p class="errorMessage">this user does not exist</p>;
   }
   return (
     <>
