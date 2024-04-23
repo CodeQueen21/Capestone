@@ -12,7 +12,7 @@ const seedUsers = async () => {
       lastName: "White",
       email: "kayla@example.com",
       phoneNumber: "1234567810",
-      password: "shhh",
+      password: "shhhhhhh",
       is_admin: false,
     }),
     createUser({

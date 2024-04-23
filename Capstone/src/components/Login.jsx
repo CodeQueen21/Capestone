@@ -1,30 +1,54 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { fetchUser } from "../ajaxHelpers";
 import { useNavigate } from "react-router-dom";
 
-export default function Login({ setUserToken }) {
+export default function Login({ setToken, token, setUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  const fetchUserDetails = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/users/me", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Could not fetch user details");
+      }
+      const userData = await response.json();
+      setUser(userData);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
       const userData = { email, password };
       const result = await fetchUser(userData);
-
       if (!result.token) {
         const errorMessage =
           "The email or password you entered does not match our records";
         throw Error(errorMessage);
       }
-
-      setUserToken(result.token);
+      setToken(result.token);
+      fetchUserDetails();
     } catch (error) {
       setError(error.message);
     }
   }
+
+  // useEffect(() => {
+  //   if (token) {
+  //     fetchUserDetails();
+  //   }
+  // }, [token]);
+
   return (
     <>
       <div id="loginForm">
