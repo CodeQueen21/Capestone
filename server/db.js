@@ -176,7 +176,15 @@ const deleteUserFoodItem = async ({ id }) => {
   return response.rows[0];
 };
 
-const fetchUserFoodItems = async () => {
+const fetchUserFoodItems = async ({ id }) => {
+  const SQL = `
+    SELECT * FROM userFoodItems WHERE user_id = $1 AND purchased = FALSE;
+    `;
+  const response = await client.query(SQL, [id]);
+  return response.rows;
+};
+
+const fetchAllUserFoodItems = async () => {
   const SQL = `
     SELECT * FROM userFoodItems;
     `;
@@ -285,6 +293,7 @@ module.exports = {
   fetchFoodItems,
   fetchUsers,
   fetchSingleUser,
+  fetchAllUserFoodItems,
   fetchSingleFoodItem,
   fetchSingleUserFoodItem,
   deleteFoodItem,

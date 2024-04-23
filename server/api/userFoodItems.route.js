@@ -2,6 +2,7 @@ const {
   createUserFoodItems,
   fetchUserFoodItems,
   fetchSingleUserFoodItem,
+  fetchAllUserFoodItems,
   updateUserFoodItem,
   deleteUserFoodItem,
 } = require("../db");
@@ -10,7 +11,15 @@ const userFoodItemsRouter = express.Router();
 
 userFoodItemsRouter.get("/", async (req, res, next) => {
   try {
-    res.send(await fetchUserFoodItems());
+    res.send(await fetchAllUserFoodItems());
+  } catch (error) {
+    next(error);
+  }
+});
+
+userFoodItemsRouter.get("/:id", async (req, res, next) => {
+  try {
+    res.send(await fetchUserFoodItems({ id: req.params.id }));
   } catch (error) {
     next(error);
   }
