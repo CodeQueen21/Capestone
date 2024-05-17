@@ -14,6 +14,7 @@ const seedFoodItems = async () => {
       image: "http://localhost:3000/pepperoni.jpg",
       category: "pizza",
       price: 20,
+      quantity: 1,
       inventory: 3,
     }),
     createFoodItem({
@@ -23,6 +24,7 @@ const seedFoodItems = async () => {
       image: "http://localhost:3000/cheese.jpeg",
       category: "pizza",
       price: 18,
+      quantity: 1,
       inventory: 3,
     }),
     createFoodItem({
@@ -32,6 +34,7 @@ const seedFoodItems = async () => {
       image: "http://localhost:3000/hawaiian.jpeg",
       category: "pizza",
       price: 25,
+      quantity: 1,
       inventory: 3,
     }),
     createFoodItem({
@@ -41,6 +44,7 @@ const seedFoodItems = async () => {
       image: "http://localhost:3000/spaghetti.jpeg",
       category: "pasta",
       price: 15,
+      quantity: 1,
       inventory: 3,
     }),
     createFoodItem({
@@ -50,6 +54,7 @@ const seedFoodItems = async () => {
       image: "http://localhost:3000/alfredo.jpeg",
       category: "pasta",
       price: 25,
+      quantity: 1,
       inventory: 3,
     }),
     createFoodItem({
@@ -59,6 +64,7 @@ const seedFoodItems = async () => {
       image: "http://localhost:3000/lasagna.jpeg",
       category: "pasta",
       price: 25,
+      quantity: 1,
       inventory: 3,
     }),
     createFoodItem({
@@ -68,6 +74,7 @@ const seedFoodItems = async () => {
       image: "http://localhost:3000/greek.jpeg",
       category: "salad",
       price: 15,
+      quantity: 1,
       inventory: 3,
     }),
     createFoodItem({
@@ -77,6 +84,7 @@ const seedFoodItems = async () => {
       image: "http://localhost:3000/ceaser.jpeg",
       category: "salad",
       price: 15,
+      quantity: 1,
       inventory: 3,
     }),
     createFoodItem({
@@ -86,6 +94,7 @@ const seedFoodItems = async () => {
       image: "http://localhost:3000/house.jpeg",
       category: "salad",
       price: 12,
+      quantity: 1,
       inventory: 3,
     }),
     createFoodItem({
@@ -95,6 +104,7 @@ const seedFoodItems = async () => {
       image: "http://localhost:3000/redVelvet.jpeg",
       category: "dessert",
       price: 20,
+      quantity: 1,
       inventory: 3,
     }),
     createFoodItem({
@@ -104,6 +114,7 @@ const seedFoodItems = async () => {
       image: "http://localhost:3000/tiramisu.jpeg",
       category: "dessert",
       price: 20,
+      quantity: 1,
       inventory: 3,
     }),
   ]);
@@ -150,7 +161,7 @@ const seedUsers = async (foodItems) => {
       phoneNumber: "1231231234",
       password: "secret",
       is_admin: true,
-      items: [pepperoni],
+      items: [pepperoni, cheese, cake],
     }),
   ]);
 };

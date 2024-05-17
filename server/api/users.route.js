@@ -51,8 +51,8 @@ usersRouter.post("/", async (req, res, next) => {
     next(error);
   }
 });
-// put back isLoggedIn when finished
-usersRouter.put("/:id", async (req, res, next) => {
+
+usersRouter.put("/:id", isLoggedIn, async (req, res, next) => {
   try {
     res.status(201).send(
       await updateUser({

@@ -108,12 +108,13 @@ const updateFoodItem = async ({
   image,
   price,
   category,
+  quantity,
   inventory,
 }) => {
   const SQL = `
     UPDATE foodItems
-    SET name = $1, description = $2, image = $3, price = $4, category = $5, inventory = $6
-    WHERE id = $7 RETURNING *;
+    SET name = $1, description = $2, image = $3, price = $4, category = $5, quantity = $6 ,inventory = $7
+    WHERE id = $8 RETURNING *;
     `;
   const response = await client.query(SQL, [
     name,
@@ -121,6 +122,7 @@ const updateFoodItem = async ({
     image,
     price,
     category,
+    quantity,
     inventory,
     id,
   ]);

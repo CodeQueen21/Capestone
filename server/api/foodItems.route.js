@@ -37,6 +37,7 @@ foodItemsRouter.post("/", isLoggedIn, async (req, res, next) => {
         image: req.body.image,
         price: req.body.price,
         category: req.body.category,
+        quantity: req.body.quantity,
         inventory: req.body.inventory,
       })
     );
@@ -44,8 +45,8 @@ foodItemsRouter.post("/", isLoggedIn, async (req, res, next) => {
     next(error);
   }
 });
-// put back isLoggedIn when finished
-foodItemsRouter.put("/:id", async (req, res, next) => {
+
+foodItemsRouter.put("/:id", isLoggedIn, async (req, res, next) => {
   try {
     res.status(201).send(
       await updateFoodItem({
@@ -55,6 +56,7 @@ foodItemsRouter.put("/:id", async (req, res, next) => {
         image: req.body.image,
         price: req.body.price,
         category: req.body.category,
+        quantity: req.body.quantity,
         inventory: req.body.inventory,
       })
     );
