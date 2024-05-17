@@ -44,8 +44,8 @@ foodItemsRouter.post("/", isLoggedIn, async (req, res, next) => {
     next(error);
   }
 });
-
-foodItemsRouter.put("/:id", isLoggedIn, async (req, res, next) => {
+// put back isLoggedIn when finished
+foodItemsRouter.put("/:id", async (req, res, next) => {
   try {
     res.status(201).send(
       await updateFoodItem({

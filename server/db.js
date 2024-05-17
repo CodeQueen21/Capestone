@@ -17,9 +17,10 @@ const createTables = async () => {
         firstName VARCHAR(25),
         lastName VARCHAR(25),
         email VARCHAR(20) UNIQUE NOT NULL,
-        phoneNumber VARCHAR(25),
+        phonenumber VARCHAR(25),
         password VARCHAR(255) NOT NULL,
-        is_admin BOOLEAN DEFAULT FALSE
+        is_admin BOOLEAN DEFAULT FALSE,
+        items VARCHAR[]
     );
     CREATE TABLE foodItems(
         id UUID PRIMARY KEY,
@@ -28,6 +29,7 @@ const createTables = async () => {
         image VARCHAR(255),
         price INTEGER NOT NULL,
         category VARCHAR(100) NOT NULL,
+        quantity INTEGER DEFAULT 1,
         inventory INTEGER DEFAULT 5 NOT NULL
     );
     CREATE TABLE userFoodItems(
@@ -45,32 +47,34 @@ const createUser = async ({
   firstName,
   lastName,
   email,
-  phoneNumber,
+  phonenumber,
   password,
   is_admin,
+  items,
 }) => {
   const SQL = `
-    INSERT INTO users(id, firstName, lastName, email, phoneNumber, password, is_admin) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *
+    INSERT INTO users(id, firstName, lastName, email, phonenumber, password, is_admin, items) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *
     `;
   const response = await client.query(SQL, [
     uuid.v4(),
     firstName,
     lastName,
     email,
-    phoneNumber,
+    phonenumber,
     await bcrypt.hash(password, 5),
     is_admin,
+    items,
   ]);
   return response.rows[0];
 };
 
-const updateUser = async ({ id, email, phoneNumber }) => {
+const updateUser = async ({ id, phonenumber, items }) => {
   const SQL = `
     UPDATE users
-    SET email = $1, phoneNumber = $2
+    SET phonenumber = $1, items = $2
     WHERE id = $3 RETURNING *;
     `;
-  const response = await client.query(SQL, [email, phoneNumber, id]);
+  const response = await client.query(SQL, [phonenumber, items, id]);
   return response.rows[0];
 };
 

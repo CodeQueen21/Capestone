@@ -33,7 +33,7 @@ userFoodItemsRouter.get("/:id", async (req, res, next) => {
   }
 });
 
-userFoodItemsRouter.post("/:id", async (req, res, next) => {
+userFoodItemsRouter.post("/", async (req, res, next) => {
   try {
     res.status(201).send(
       await createUserFoodItems({
@@ -47,6 +47,21 @@ userFoodItemsRouter.post("/:id", async (req, res, next) => {
     next(error);
   }
 });
+
+// userFoodItemsRouter.post("/:id", async (req, res, next) => {
+//   try {
+//     res.status(201).send(
+//       await createUserFoodItems({
+//         user_id: req.params.id,
+//         foodItem_id: req.body.foodItem_id,
+//         quantity: req.body.quantity,
+//         purchased: req.body.purchased,
+//       })
+//     );
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 userFoodItemsRouter.put("/:id", async (req, res, next) => {
   try {
