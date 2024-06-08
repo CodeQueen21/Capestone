@@ -2,7 +2,7 @@ const {
   createUser,
   fetchUsers,
   fetchSingleUser,
-  updateUser,
+  // updateUser,
   authenticate,
   isLoggedIn,
   issueUserToken,
@@ -40,10 +40,9 @@ usersRouter.post("/", async (req, res, next) => {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
-      phoneNumber: req.body.phoneNumber,
+      phonenumber: req.body.phonenumber,
       password: req.body.password,
       is_admin: req.body.is_admin,
-      items: req.body.items,
     });
     const token = await issueUserToken(newUser.id);
     res.status(201).send({ token });
@@ -52,13 +51,11 @@ usersRouter.post("/", async (req, res, next) => {
   }
 });
 
-usersRouter.put("/:id", isLoggedIn, async (req, res, next) => {
+usersRouter.patch("/:id", isLoggedIn, async (req, res, next) => {
   try {
     res.status(201).send(
       await updateUser({
         id: req.params.id,
-        phonenumber: req.body.phonenumber,
-        items: req.body.items,
       })
     );
   } catch (error) {

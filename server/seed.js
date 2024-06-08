@@ -140,28 +140,28 @@ const seedUsers = async (foodItems) => {
       firstName: "Kayla",
       lastName: "White",
       email: "kayla@example.com",
-      phoneNumber: "1234567810",
+      phonenumber: "1234567810",
       password: "shhhhhhh",
       is_admin: false,
-      items: [],
+      // items: [],
     }),
     createUser({
       firstName: "Dave",
       lastName: "Brown",
       email: "dave@example.com",
-      phoneNumber: "1111111111",
+      phonenumber: "1111111111",
       password: "shhhhi",
       is_admin: false,
-      items: [],
+      // items: [],
     }),
     createUser({
       firstName: "Sarah",
       lastName: "Green",
       email: "sarah@example.com",
-      phoneNumber: "1231231234",
-      password: "secret",
+      phonenumber: "1231231234",
+      password: "secret101!",
       is_admin: true,
-      items: [pepperoni, cheese, cake],
+      // items: [pepperoni, cheese, cake],
     }),
   ]);
 };
@@ -209,6 +209,6 @@ module.exports = async () => {
 
   const foodItems = await seedFoodItems();
   const users = await seedUsers(foodItems);
-  // const userFoodItems = await seedUserFoodItems(users, foodItems);
   console.log(users);
+  // const userFoodItems = await seedUserFoodItems(users, foodItems);
 };

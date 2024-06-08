@@ -1,4 +1,5 @@
 import userData from "./components/Register";
+import userOrderData from "./components/MenuItem";
 
 async function fetchFoodItems() {
   try {
@@ -45,6 +46,26 @@ const createUser = async (userData) => {
   }
 };
 
+// const createUserOrder = async (user_id, userOrderData) => {
+//   try {
+//     const response = await fetch(
+//       `http://localhost:3000/api/userFoodItems/${user_id}`,
+//       {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(userOrderData),
+//       }
+//     );
+//     const result = await response.json();
+//     return result;
+//   } catch (error) {
+//     console.error("Error:", error);
+//     throw error;
+//   }
+// };
+
 const fetchUser = async (userData) => {
   try {
     const response = await fetch("http://localhost:3000/api/users/login", {
@@ -61,33 +82,35 @@ const fetchUser = async (userData) => {
   }
 };
 
-async function fetchUserFoodItems() {
-  try {
-    const response = await fetch("http://localhost:3000/api/userFoodItems");
-    const result = await response.json();
-    return result;
-  } catch (error) {
-    console.log("Error:", error);
-  }
-}
+// const addToCart = async (id, token) => {
+//   try {
+//     const response = await fetch(`http://localhost:3000/api/users/${id}`, {
+//       method: "PATCH",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${token}`,
+//       },
+//       body: JSON.stringify({
+//         items: item,
+//       }),
+//     });
+//     const result = await response.json();
+//     return result;
+//     // return result;
+//   } catch (error) {
+//     console.error("Error", error);
+//   }
+// };
 
-const createUserOrder = async (id, token) => {
-  try {
-    const response = await fetch(
-      `http://localhost:3000/api/userFoodItems/${id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        // body: JSON.stringify({
-        //   available: false,
-        // }),
-      }
-    );
-  } catch (error) {}
-};
+// async function fetchUserFoodItems() {
+//   try {
+//     const response = await fetch("http://localhost:3000/api/userFoodItems");
+//     const result = await response.json();
+//     return result;
+//   } catch (error) {
+//     console.log("Error:", error);
+//   }
+// }
 
 export {
   fetchFoodItems,
@@ -95,5 +118,5 @@ export {
   fetchUser,
   createUser,
   userData,
-  fetchUserFoodItems,
+  userOrderData,
 };

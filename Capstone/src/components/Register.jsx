@@ -5,9 +5,10 @@ export default function Register({ setToken }) {
   const [firstName, setFirstname] = useState("");
   const [lastName, setLastname] = useState("");
   const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phonenumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState("false");
+  const [items, setItems] = useState([]);
   const [error, setError] = useState("");
 
   async function handleSubmit(e) {
@@ -16,7 +17,7 @@ export default function Register({ setToken }) {
       const condition =
         !firstName ||
         !lastName ||
-        !phoneNumber ||
+        !phonenumber ||
         !email ||
         !password ||
         password.length < 8;
@@ -28,10 +29,11 @@ export default function Register({ setToken }) {
       const userData = {
         firstName: firstName,
         lastName: lastName,
-        phoneNumber: phoneNumber,
+        phonenumber: phonenumber,
         email: email,
         password: password,
-        isAdmin: isAdmin,
+        is_admin: isAdmin,
+        items: items,
       };
       const result = await createUser(userData);
       setToken(result.token);
@@ -62,7 +64,7 @@ export default function Register({ setToken }) {
           <label>
             Phone number:{" "}
             <input
-              value={phoneNumber}
+              value={phonenumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </label>

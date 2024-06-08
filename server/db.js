@@ -19,8 +19,7 @@ const createTables = async () => {
         email VARCHAR(20) UNIQUE NOT NULL,
         phonenumber VARCHAR(25),
         password VARCHAR(255) NOT NULL,
-        is_admin BOOLEAN DEFAULT FALSE,
-        items VARCHAR[]
+        is_admin BOOLEAN DEFAULT FALSE
     );
     CREATE TABLE foodItems(
         id UUID PRIMARY KEY,
@@ -53,7 +52,7 @@ const createUser = async ({
   items,
 }) => {
   const SQL = `
-    INSERT INTO users(id, firstName, lastName, email, phonenumber, password, is_admin, items) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *
+    INSERT INTO users(id, firstName, lastName, email, phonenumber, password, is_admin) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *
     `;
   const response = await client.query(SQL, [
     uuid.v4(),
@@ -63,18 +62,17 @@ const createUser = async ({
     phonenumber,
     await bcrypt.hash(password, 5),
     is_admin,
-    items,
   ]);
   return response.rows[0];
 };
 
-const updateUser = async ({ id, phonenumber, items }) => {
+const updateCartItems = async ({ id, items }) => {
   const SQL = `
     UPDATE users
-    SET phonenumber = $1, items = $2
-    WHERE id = $3 RETURNING *;
+    SET items = array_append(items, $1)
+    WHERE id = $2 RETURNING items;
     `;
-  const response = await client.query(SQL, [phonenumber, items, id]);
+  const response = await client.query(SQL, [items, id]);
   return response.rows[0];
 };
 
@@ -171,6 +169,15 @@ const updateUserFoodItem = async ({ id, quantity, purchased }) => {
   const response = await client.query(SQL, [quantity, purchased, id]);
   return response.rows[0];
 };
+// const updateUser = async ({ id, items }) => {
+//   const SQL = `
+//     UPDATE users
+//     SET items = array_append(items, $1)
+//     WHERE id = $2 RETURNING items;
+//     `;
+//   const response = await client.query(SQL, [items, id]);
+//   return response.rows[0];
+// };
 
 const deleteUserFoodItem = async ({ id }) => {
   const SQL = `
@@ -290,11 +297,11 @@ module.exports = {
   client,
   createTables,
   createUser,
-  updateUser,
+  updateCartItems,
   createFoodItem,
   updateFoodItem,
   createUserFoodItems,
-  updateUserFoodItem,
+  // updateUser,
   fetchUserFoodItems,
   fetchFoodItems,
   fetchUsers,

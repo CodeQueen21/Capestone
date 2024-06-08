@@ -163,3 +163,47 @@ span {
   text-align: center;
   margin-top: 20%;
 }
+
+#cart-title {
+  text-align: center;
+  margin: 40px 0 100px 0;
+  color: white;
+}
+
+/* #item-name {
+ 
+} */
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  /* background-color: rgb(223, 198, 9); */
+  background-color: rgb(219, 219, 219);
+}
+
+th {
+  /* background-color: rgb(156, 3, 3); */
+  background-color: rgb(193, 1, 1);
+}
+table,
+th,
+td {
+  border: 1px solid black;
+  width: 75%;
+  text-align: center;
+}
+
+th,
+td {
+  height: 30px;
+}
+
+#total {
+  text-align: center;
+  margin-top: 10%;
+}
+
+#total p {
+  color: white;
+  font-weight: bold;
+  font-size: larger;
+}
