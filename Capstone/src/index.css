@@ -197,6 +197,20 @@ td {
   height: 30px;
 }
 
+.remove {
+  display: block;
+  margin: 5px auto 5px auto;
+  padding: 2px;
+}
+.quantity {
+  display: inline-block;
+}
+#cart-container p {
+  color: white;
+  text-align: center;
+  font-size: 40px;
+}
+
 #total {
   text-align: center;
   margin-top: 10%;

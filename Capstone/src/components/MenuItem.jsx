@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchSingleFoodItem } from "../ajaxHelpers";
 
-export default function MenuItem({ token, user, cart, setCart }) {
+export default function MenuItem({ cart, setCart }) {
   const { id } = useParams();
   const [foodItem, setFoodItem] = useState("");
   let answer;

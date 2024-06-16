@@ -5,72 +5,70 @@ import MenuItem from "./MenuItem";
 
 export default function Cart({ user, cart, setCart, foodItems }) {
   const [error, setError] = useState("");
+  let total = 0;
   // if (!user) {
   //   return <p className="errorMessage">Please log in to view this page.</p>;
   // }
   // console.log(cart);
 
-  function itemTotal() {
-    // for (let i = 0; i < cart.length; i++) {
-    //   console.log(cart[i].price * cart[i].quantity);
-    // }
-    //   setCart((cart) =>
-    //     cart.map((item) =>
-    //       item ? { ...item, price: item.price * item.quantity } : item
-    //     )
-    //   );
-  }
+  // function isCartEmpty() {
+  //   for (let i = 0; i < cart.length; i++) {
+  //     console.log(cart.length)
+  //   }
+  // }
 
   function orderTotal() {
     let sum = 0;
     let totalPrice = 0;
     let prices = [];
     for (let i = 0; i < cart.length; i++) {
-      // prices.push(cart[i].price);
       totalPrice = cart[i].price * cart[i].quantity;
       prices.push(totalPrice);
     }
-    console.log(prices);
-    // prices.forEach((num) => {
-    //   sum += num;
-    // });
-    // return sum;
+    prices.forEach((num) => {
+      total += num;
+    });
+    return total;
   }
-  // let sum = orderTotal();
-  // orderTotal();
-  // console.log(sum);
+  orderTotal();
 
   return (
     <>
       <div id="cart-container">
         <h1 id="cart-title">My items</h1>
-
-        <table>
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Price</th>
-              <th>Qty</th>
-              <th>Total price</th>
-            </tr>
-          </thead>
-          {cart &&
-            cart.map((item, i) => {
-              return (
-                <tbody className="item" key={i}>
-                  <tr>
-                    <td>{item.name}</td>
-                    <td>${item.price}</td>
-                    <td>{item.quantity}</td>
-                    <td>${item.price * item.quantity}</td>
-                  </tr>
-                </tbody>
-              );
-            })}
-        </table>
-
+        {}{" "}
+        {cart.length ? (
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total price</th>
+              </tr>
+            </thead>
+            {cart &&
+              cart.map((item, i) => {
+                return (
+                  <tbody className="item" key={i}>
+                    <tr>
+                      <td>
+                        {item.name}
+                        <button class="remove">remove</button>
+                      </td>
+                      <td>${item.price}</td>
+                      <td>{item.quantity}</td>
+                      <td>${item.price * item.quantity}</td>
+                    </tr>
+                  </tbody>
+                );
+              })}
+          </table>
+        ) : (
+          <p>There are no items in your cart</p>
+        )}
         <div id="total">
-          <p>Total: $</p>
+          <p>Your Total: ${total}</p>
         </div>
       </div>
     </>

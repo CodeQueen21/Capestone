@@ -46,21 +46,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/foodItems" element={<Menu foodItems={foodItems} />} />
+        //add conditional to add to cart button
         <Route
           path="/foodItems/:id"
-          element={
-            <MenuItem
-              userToken={userToken}
-              setUserItem={setUserItem}
-              user={user}
-              setUser={setUser}
-              userItem={userItem}
-              id={id}
-              cart={cart}
-              setCart={setCart}
-              // isLoggedIn={user}
-            />
-          }
+          element={<MenuItem cart={cart} setCart={setCart} isLoggedIn={user} />}
         />
         <Route path="/users" element={<Register setToken={setToken} />} />
         <Route
