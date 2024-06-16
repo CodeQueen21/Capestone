@@ -6,6 +6,7 @@ import MenuItem from "./MenuItem";
 export default function Cart({ user, cart, setCart, foodItems }) {
   const [error, setError] = useState("");
   let total = 0;
+
   // if (!user) {
   //   return <p className="errorMessage">Please log in to view this page.</p>;
   // }
@@ -18,7 +19,6 @@ export default function Cart({ user, cart, setCart, foodItems }) {
   // }
 
   function orderTotal() {
-    let sum = 0;
     let totalPrice = 0;
     let prices = [];
     for (let i = 0; i < cart.length; i++) {
@@ -30,7 +30,13 @@ export default function Cart({ user, cart, setCart, foodItems }) {
     });
     return total;
   }
+
   orderTotal();
+
+  function removeItem(deleteItem) {
+    const newCart = cart.filter((item) => item.name !== deleteItem.name);
+    return newCart;
+  }
 
   return (
     <>
@@ -54,7 +60,14 @@ export default function Cart({ user, cart, setCart, foodItems }) {
                     <tr>
                       <td>
                         {item.name}
-                        <button class="remove">remove</button>
+                        <button
+                          className="remove"
+                          onClick={() => {
+                            setCart(removeItem(item));
+                          }}
+                        >
+                          remove
+                        </button>
                       </td>
                       <td>${item.price}</td>
                       <td>{item.quantity}</td>
