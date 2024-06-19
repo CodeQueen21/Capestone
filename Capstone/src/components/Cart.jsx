@@ -38,6 +38,11 @@ export default function Cart({ user, cart, setCart, foodItems }) {
     return newCart;
   }
 
+  function removeAllItems() {
+    const emptyCart = cart.filter((item) => item === true);
+    return emptyCart;
+  }
+
   return (
     <>
       <div id="cart-container">
@@ -80,6 +85,15 @@ export default function Cart({ user, cart, setCart, foodItems }) {
         ) : (
           <p>There are no items in your cart</p>
         )}
+        <div id="clear-btn">
+          <button
+            onClick={() => {
+              setCart(removeAllItems());
+            }}
+          >
+            Clear Order
+          </button>
+        </div>
         <div id="total">
           <p>Your Total: ${total}</p>
         </div>
