@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchFoodItems } from "./ajaxHelpers";
 import { Routes, Route } from "react-router-dom";
 import Navigations from "./components/Navigations";
-import { useParams } from "react-router-dom";
+
 import Home from "./components/Home";
 import Menu from "./components/Menu";
 import MenuItem from "./components/MenuItem";
@@ -15,20 +15,13 @@ function App() {
   const [token, setToken] = useState(null);
   const [userToken, setUserToken] = useState(null);
   const [user, setUser] = useState("");
-  const [userItem, setUserItem] = useState(null);
+
   const [foodItems, setFoodItems] = useState([]);
   const [cart, setCart] = useState([]);
-  const { id } = useParams();
 
-  // console.log(cart[1].name);
-  // let filterPrice = cart.filter(function (item) {
-  //   return item.price != 20;
-  // });
   async function fetchItems() {
     setFoodItems(await fetchFoodItems());
   }
-
-  // console.log(filterPrice);
 
   useEffect(() => {
     fetchItems();
@@ -37,16 +30,11 @@ function App() {
   return (
     <>
       <Navigations isLoggedIn={user} />
-      {/* <Register setToken={setToken} />
-      <Login setToken={setToken} /> */}
-      {/* <Account token={token} /> */}
-      {/* <Menu foodItems={foodItems} /> */}
-      {/* <Cart userToken={userToken} user={user} setUser={setUser} /> */}
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/foodItems" element={<Menu foodItems={foodItems} />} />
-        //add conditional to add to cart button
+
         <Route
           path="/foodItems/:id"
           element={<MenuItem cart={cart} setCart={setCart} isLoggedIn={user} />}
@@ -66,14 +54,7 @@ function App() {
         />
         <Route
           path="cart"
-          element={
-            <Cart
-              user={user}
-              cart={cart}
-              setCart={setCart}
-              foodItems={foodItems}
-            />
-          }
+          element={<Cart user={user} cart={cart} setCart={setCart} />}
         />
       </Routes>
     </>
