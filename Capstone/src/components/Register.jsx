@@ -37,6 +37,7 @@ export default function Register({ setToken }) {
       };
       const result = await createUser(userData);
       setToken(result.token);
+      alert("You have been successfuly registered!");
     } catch (error) {
       setError(error.message);
     }

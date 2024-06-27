@@ -38,16 +38,11 @@ export default function Login({ setToken, token, setUser }) {
       }
       setToken(result.token);
       fetchUserDetails();
+      alert("You are successfully logged in!");
     } catch (error) {
       setError(error.message);
     }
   }
-
-  // useEffect(() => {
-  //   if (token) {
-  //     fetchUserDetails();
-  //   }
-  // }, [token]);
 
   return (
     <>
